@@ -6,7 +6,8 @@
 
 class Wilt {
 public:
-    std::string getLeaderboard(); 
+    std::string getLeaderboard();
+    void postScrobble();
 
 protected:
     HTTPWeb request;

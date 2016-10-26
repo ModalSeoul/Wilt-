@@ -5,6 +5,6 @@
 int main()
 {
     Wilt wilt;
-    std::cout << wilt.getLeaderboard();
+    wilt.postScrobble();
     return 0;
 }

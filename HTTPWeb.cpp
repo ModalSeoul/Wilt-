@@ -24,7 +24,7 @@ HTTPWeb::~HTTPWeb()
     curl_easy_cleanup(curl);
 }
 
-string HTTPWeb::download(const string& url)
+string HTTPWeb::get(const string& url)
 {
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
@@ -38,4 +38,23 @@ string HTTPWeb::download(const string& url)
                 curl_easy_strerror(res));
     }
     return out.str();
+}
+
+bool HTTPWeb::post(const string& url, const string& data)
+{
+    curl_global_init(CURL_GLOBAL_ALL);
+    if (curl)
+    {
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_POST, 1);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
+        CURLcode res = curl_easy_perform(curl);
+        if (res != CURLE_OK)
+        {
+            fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                    curl_easy_strerror(res));
+            return true;
+        }
+        return false;
+    }
 }

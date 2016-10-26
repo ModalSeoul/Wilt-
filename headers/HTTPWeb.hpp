@@ -7,7 +7,8 @@ class HTTPWeb {
 public:
     HTTPWeb();
     ~HTTPWeb();
-    std::string download(const std::string& url);
+    std::string get(const std::string& url);
+    bool post(const std::string& url, const std::string& data);
 private:
     void* curl;
 };
