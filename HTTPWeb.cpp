@@ -1,4 +1,4 @@
-#include "headers/HTTPDownloader.hpp"
+#include "headers/HTTPWeb.hpp"
 #include <curl/curl.h>
 #include <curl/easy.h>
 #include <curl/curlbuild.h>
@@ -14,17 +14,17 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
     return size * nmemb;
 }
 
-HTTPDownloader::HTTPDownloader()
+HTTPWeb::HTTPWeb()
 {
     curl = curl_easy_init();
 }
 
-HTTPDownloader::~HTTPDownloader()
+HTTPWeb::~HTTPWeb()
 {
     curl_easy_cleanup(curl);
 }
 
-string HTTPDownloader::download(const string& url)
+string HTTPWeb::download(const string& url)
 {
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);

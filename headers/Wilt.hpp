@@ -1,5 +1,5 @@
 #include <string>
-#include "HTTPDownloader.hpp"
+#include "HTTPWeb.hpp"
 
 #ifndef WILT_H
 #define WILT_H
@@ -9,7 +9,7 @@ public:
     std::string getLeaderboard(); 
 
 protected:
-    HTTPDownloader request;
+    HTTPWeb request;
     const std::string apiUrl = "https://modal.moe/api/";
 };
 #endif
