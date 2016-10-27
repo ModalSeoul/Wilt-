@@ -5,6 +5,6 @@
 int main()
 {
     Wilt wilt;
-    wilt.postScrobble();
+    wilt.getLeaderboard();
     return 0;
 }
